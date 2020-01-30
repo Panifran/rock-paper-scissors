@@ -1,72 +1,72 @@
 // variables to count the scoring
 
-let counterPlayer = 0;
-let counterComputer = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 // function general for Round
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection == "scissors" && computerSelection == "paper") {
-    alert("Player wins");
-    return counterPlayer++;
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    alert("Computer wins");
-    return counterComputer++;
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
-    alert("Player wins");
-    return counterPlayer++;
-  } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    alert("Computer wins");
-    return counterComputer++;
+  if (playerSelection == "rock" && computerSelection == "paper") {
+    alert("Computer Wins");
+    return computerScore++;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    alert("Player wins");
-    return counterPlayer++;
-  } else if (playerSelection == "rock" && computerSelection == "paper") {
-    alert("Computer wins");
-    return counterComputer;
+    alert("Player Wins");
+    return playerScore++;
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    alert("Player Wins");
+    return playerScore++;
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    alert("Computer Wins");
+    return computerScore++;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    alert("Player Wins");
+    return playerScore++;
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    alert("Computer Wins");
+    return computerScore++;
   } else {
     alert("Draw");
   }
 }
 // functions for playRound selections - Player and Computer
 
-function outputPlayer() {
-  return prompt("rock, paper, scissors");
+function playerChoose() {
+ return prompt("rock, paper, scissors").toLowerCase();
 }
 
-function outputComputer() {
+function computerChoose() {
   Math.random();
   if (Math.random() <= 0.33) {
     return "rock";
-  } else if (Math.random() > 0.33 && Math.random() <= 0.66) {
-    return "scissors";
-  } else {
+  } else if (Math.random() < 0.67) {
     return "paper";
+  } else {
+    return "scissors";
   }
 }
 
 // function game including playRound function
 
 function game() {
-  playRound(outputPlayer(), outputComputer());
+  return playRound(playerChoose(), computerChoose());
 }
 
 // call 5 rounds
+game();
+game();
+game();
+game();
+game();
 
-game();
-game();
-game();
-game();
-game();
 
 // scoring of the final result
 
-if (counterPlayer > counterComputer) {
-  alert("Player wins the game");
-} else if (counterPlayer < counterComputer) {
-  alert("Computer wins the game");
-} else {
-  alert("Game draw");
-}
+if (playerScore > computerScore) {
+  console.log('Player Wins the game');
+ } else if (playerScore < computerScore) {
+    console.log('Computer Wins the game');
+ } else {
+  console.log('Game finished in a Draw');
+ }
 
-
+console.log(`PLAYER: ${playerScore} COMPUTER: ${computerScore}`);
